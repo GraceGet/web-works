@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Exercise 20 - Scope</title></head>
+<body>
+  <script>
+    let outside = "I'm outside";
+    console.log(outside);
+
+    {
+      let inside = "I'm inside";
+      console.log(inside);
+    }
+
+    // console.log(inside); // ❌ would cause an error: inside is not defined
+  </script>
+</body>
+</html>

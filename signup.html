@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f2f2f2;
+    }
+     .all {
+      
+      align-items: center;
+     }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-sizing: border-box;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      display: flex;
+      text-align: left;
+      margin-bottom: 20px;
+      
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    input.invalid {
+      border-color: red;
+    }
+
+    span.error {
+      color: red;
+      font-size: 14px;
+      display: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 15px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      display: none;
+      background-color: #e6ffe6;
+      padding: 10px;
+      border: 1px solid #00cc00;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+    <div class="all">
+   <div class="Signup"> <h2>Signup</h2></div>
+  <div class="container">
+    
+
+    <label for="name">Name:</label>
+    <input type="text" id="name">
+    <span id="nameError" class="error">Name must be between 4 and 7 characters.</span>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password">
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword">
+    <span id="passwordError" class="error">Passwords do not match.</span>
+
+    <button onclick="validateForm()">Submit</button>
+
+    <div class="result" id="resultBox">
+      ✅ Form submitted successfully!
+    </div>
+  </div>
+  </div>
+
+  <script>
+    function validateForm() {
+      const nameInput = document.getElementById("name");
+      const passwordInput = document.getElementById("password");
+      const confirmInput = document.getElementById("confirmPassword");
+      const nameError = document.getElementById("nameError");
+      const passwordError = document.getElementById("passwordError");
+      const resultBox = document.getElementById("resultBox");
+
+      let isValid = true;
+
+      if (nameInput.value.length < 4 || nameInput.value.length > 7) {
+        nameInput.classList.add("invalid");
+        nameError.style.display = "block";
+        isValid = false;
+      } else {
+        nameInput.classList.remove("invalid");
+        nameError.style.display = "none";
+      }
+
+      if (passwordInput.value !== confirmInput.value || passwordInput.value === "") {
+        passwordInput.classList.add("invalid");
+        confirmInput.classList.add("invalid");
+        passwordError.style.display = "block";
+        isValid = false;
+      } else {
+        passwordInput.classList.remove("invalid");
+        confirmInput.classList.remove("invalid");
+        passwordError.style.display = "none";
+      }
+
+      if (isValid) {
+        resultBox.style.display = "block";
+      } else {
+        resultBox.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
